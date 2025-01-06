@@ -57,7 +57,7 @@ vector<int> BWTPatternMatching(string bwt, string pattern) {
     int patternSize = pattern.size();
 
     // Build firstOccurrence[] to store first position of each symbol
-    map<char, int> firstOccurrence; // 26 symbols from alphabet, 1 'space' character, 1 '$' character
+    unordered_map<char, int> firstOccurrence; // 26 symbols from alphabet, 1 'space' character, 1 '$' character
     firstOccurrence['$'] = -1;
     firstOccurrence[' '] = -1;
     for (char ch = 'a'; ch <= 'z'; ch++) {
@@ -73,7 +73,7 @@ vector<int> BWTPatternMatching(string bwt, string pattern) {
     }
 
     // Build count[] to store occurences of symbol in the first 'i' position of the LastColumn ('bwt' string)
-    vector<map<char, int>> count(n + 1);
+    vector<unordered_map<char, int>> count(n + 1);
     count[0]['$'] = 0;
     count[0][' '] = 0;
     for (char ch = 'a'; ch <= 'z'; ch++) {
