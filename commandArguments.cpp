@@ -60,6 +60,17 @@ void getUserArguments() {
         second_file = input_arguments[3];
         third_file = input_arguments[4];
     }
+    // Command 3
+    else if (input_arguments[1] == "-comp") {
+        command_line = CommandLine::Command3;
+        first_file = input_arguments[2];
+        second_file = input_arguments[3];
+
+        if (input_arguments[4] == "--compress") 
+            output_parameter = OutputParameter::Compress;
+        else
+            output_parameter = OutputParameter::Decompress;
+    }
 }
 
 void processCommand() {
@@ -108,6 +119,23 @@ void processCommand() {
             break;
         }
 
+        case CommandLine::Command3:
+        {
+            string str;
+            readFile(str, first_file);
+            
+            string outputStr;
+            if (output_parameter == OutputParameter::Compress)
+                outputStr = comp(str);
+            else
+                outputStr = decomp(str);
+            
+            ofstream fileOut(second_file);
+            fileOut << outputStr << endl;
+
+            fileOut.close();
+            break;
+        }
         default:
             break;
     }

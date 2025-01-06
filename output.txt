@@ -1,3 +1,1 @@
-he: 0, 30, 66, 105
-queen: 39
-spades: 48
+cay thang chinh vcl$

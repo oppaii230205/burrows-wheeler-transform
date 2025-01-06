@@ -8,6 +8,7 @@
 #include <string>
 #include <map>
 #include <unordered_map>
+#include <sstream>
 
 using namespace std;
 
@@ -17,12 +18,15 @@ using namespace std;
 enum class CommandLine {
 	Command1,
 	Command2,
+    Command3,
 	Unknown
 };
 
 enum class OutputParameter {
     BWT,
     InverseBWT,
+    Compress,
+    Decompress,
     Unknown
 };
 
@@ -49,11 +53,17 @@ void readFile(string& str, string fileName);
 void writeFile(vector<string> strings, string fileName);
 
 //-------------------------------------------------
-// ___________Burrows-Wheeler Transform (BWT)__________
+// ___________BURROWS-WHEELER TRANSFORM(BWT)__________
 string burrowsWheelerTransform(string s);
 
 string inverseBurrowsWheelerTransform(string bwt);
 
 vector<int> BWTPatternMatching(string bwt, string pattern);
+
+//-------------------------------------------------
+// ___________COMPRESSION APPLICATION__________
+string comp(string s);
+
+string decomp(string s);
 
 #endif
